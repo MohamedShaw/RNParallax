@@ -52,9 +52,10 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   bar: {
-    backgroundColor: 'transparent',
+    backgroundColor: 'white',
     height: DEFAULT_HEADER_MIN_HEIGHT,
     position: 'absolute',
+   
     top: 0,
     left: 0,
     right: 0,
@@ -203,7 +204,7 @@ class RNParallax extends Component {
           {
             height: this.getHeaderMaxHeight(),
             opacity: imageOpacity,
-            transform: [{translateY: imageTranslate}, {scale: imageScale}],
+            transform: [{translateY: imageTranslate}, ],
           },
         ]}
         source={backgroundImage}
@@ -262,7 +263,7 @@ class RNParallax extends Component {
             backgroundColor: backgroundImage ? 'transparent' : backgroundColor,
           },
         ]}>
-        {backgroundImage && this.renderBackgroundImage()}
+        {this.props.content()}
         {!backgroundImage && this.renderPlainBackground()}
       </Animated.View>
     );
@@ -355,9 +356,10 @@ class RNParallax extends Component {
         <StatusBar backgroundColor={statusBarColor || navbarColor} />
         {this.renderScrollView()}
         {this.renderNavbarBackground()}
-        {this.renderHeaderBackground()}
         {this.renderHeaderTitle()}
         {this.renderHeaderForeground()}
+        {this.renderHeaderBackground()}
+
       </View>
     );
   }
